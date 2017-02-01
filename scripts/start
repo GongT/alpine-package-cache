@@ -1,7 +1,5 @@
 #!/bin/sh
 
-update-resolve
-
 set -e
 set -x
 
@@ -28,9 +26,7 @@ echo ';'  >> "${RESOLVE_FILE_PATH}"
 
 echo "try start nginx server."
 
-mkdir -p "${ROOT}/cache"
-chmod 0777 "${ROOT}/cache"
-
-sh --login -i
+cat /etc/resolv.conf
+cat "${RESOLVE_FILE_PATH}"
 
 nginx -c "${CONFIG}/nginx.conf" -g "daemon off;"

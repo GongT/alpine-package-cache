@@ -33,6 +33,8 @@ build.stopCommand('./scripts/stop');
 // build.dependService('nginx', 'http://github.com/GongT/nginx-docker.git');
 build.dockerRunArgument('--dns=8.8.8.8', '--dns=223.5.5.5');
 
+build.volume('./cache', '/data/cache');
+
 build.specialLabel(ELabelNames.alias, ['mirrors.aliyun.com', 'dl-cdn.alpinelinux.org']);
 build.disablePlugin(EPlugins.jenv);
 
