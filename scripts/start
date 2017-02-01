@@ -12,7 +12,7 @@ fi
 CONFIG="${ROOT}/config"
 
 echo "proxy_cache_path ${ROOT}/cache levels=1:2 keys_zone=my_cache:10m max_size=10g
-					   inactive=60m use_temp_path=off;" > ${CONFIG}/conf.d/cache.conf
+					   inactive=60m use_temp_path=off ;" > ${CONFIG}/conf.d/cache.conf
 
 RESOLVE_FILE_PATH=${CONFIG}/resolv.conf
 echo resolver > "${RESOLVE_FILE_PATH}"
