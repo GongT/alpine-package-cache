@@ -1,0 +1,21 @@
+### START MICRO-BUILD SECTION >>>
+# DO NOT EDIT THIS BY HAND
+.*
+*.tgz
+node_modules/
+jspm_packages/
+*.log
+npm-debug.log*
+coverage/
+typings/
+*.md
+Dockerfile
+*.Dockerfile
+!.micro-build/json-env-data.json
+!.jsonenv/_current_result.json.d.ts
+!.micro-build/npm-install
+!.micro-build/bin
+!.micro-build/package-json
+!.micro-build/jspm-install
+!.micro-build/plugins
+### <<< END MICRO-BUILD SECTION
