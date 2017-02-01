@@ -19,3 +19,7 @@ Dockerfile
 !.micro-build/jspm-install
 !.micro-build/plugins
 ### <<< END MICRO-BUILD SECTION
+
+cache/
+config/conf.d/cache.conf
+config/resolv.conf

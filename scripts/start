@@ -6,30 +6,31 @@ set -e
 set -x
 
 if [ "yes" == "${RUN_IN_DOCKER}" ]; then
-	CONFIG=/data/config/nginx.conf
-	echo "proxy_cache_path /data/cache levels=1:2 keys_zone=my_cache:10m max_size=10g
-                           inactive=60m use_temp_path=off;" > /data/config/conf.d/cache.conf
+	ROOT=/data
 else
-	CONFIG="$(pwd)/config/nginx.conf"
-	echo "proxy_cache_path $(pwd)/cache levels=1:2 keys_zone=my_cache:10m max_size=10g
-                           inactive=60m use_temp_path=off;" > $(pwd)/config/conf.d/cache.conf
+	ROOT=$(pwd)
 fi
 
-RESOLVERS="$(
-)"
+CONFIG="${ROOT}/config"
 
-RESOLVE_FILE_PATH=$(pwd)/config/resolv.conf
+echo "proxy_cache_path ${ROOT}/cache levels=1:2 keys_zone=my_cache:10m max_size=10g
+					   inactive=60m use_temp_path=off;" > ${CONFIG}/conf.d/cache.conf
+
+RESOLVE_FILE_PATH=${CONFIG}/resolv.conf
 echo resolver > "${RESOLVE_FILE_PATH}"
 
-set +e
-grep nameserver /etc/resolv.conf |
+	grep nameserver /etc/resolv.conf  |
 	grep -v 127.0.0.1 |
 	grep -v 172.17.0 |
 	grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' >> "${RESOLVE_FILE_PATH}"
-set -e
 
 echo ';'  >> "${RESOLVE_FILE_PATH}"
 
 echo "try start nginx server."
 
-nginx -c "$CONFIG" -g "daemon off;"
+mkdir -p "${ROOT}/cache"
+chmod 0777 "${ROOT}/cache"
+
+sh --login -i
+
+nginx -c "${CONFIG}/nginx.conf" -g "daemon off;"

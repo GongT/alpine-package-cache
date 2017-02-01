@@ -13,3 +13,7 @@ typings/
 !.micro-build/config.ts
 !.*ignore
 ### <<< END MICRO-BUILD SECTION
+
+cache/
+config/conf.d/cache.conf
+config/resolv.conf

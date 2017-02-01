@@ -31,6 +31,11 @@ build.shellCommand('/bin/sh');
 build.stopCommand('./scripts/stop');
 
 // build.dependService('nginx', 'http://github.com/GongT/nginx-docker.git');
-build.dockerRunArgument('--dns=${HOST_LOOP_IP}');
+build.dockerRunArgument('--dns=8.8.8.8', '--dns=223.5.5.5');
 
-build.volume('./config', '/etc/nginx');
+build.specialLabel(ELabelNames.alias, ['mirrors.aliyun.com', 'dl-cdn.alpinelinux.org']);
+build.disablePlugin(EPlugins.jenv);
+
+build.prependDockerFileContent('COPY scripts /data/scripts');
+build.prependDockerFileContent('COPY config /data/config');
+build.noDataCopy(true);
