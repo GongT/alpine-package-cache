@@ -1,7 +1,5 @@
 #!/bin/sh
 
-nginx -c "${CONFIG}/nginx.conf" -g "daemon off;"
-
 echo "try restart nginx server."
 
 if nginx -t ; then

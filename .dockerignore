@@ -22,5 +22,3 @@ Dockerfile
 !.micro-build/plugins
 cache
 ### <<< END MICRO-BUILD SECTION
-
-config/cache_define.d
