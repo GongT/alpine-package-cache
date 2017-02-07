@@ -2,12 +2,14 @@
 # DO NOT EDIT THIS BY HAND
 .*
 *.tgz
-node_modules/
-jspm_packages/
+node_modules
+jspm_packages
+**/node_modules
+**/jspm_packages
 *.log
 npm-debug.log*
 coverage/
-typings/
+typings
 *.md
 Dockerfile
 *.Dockerfile
@@ -18,8 +20,7 @@ Dockerfile
 !.micro-build/package-json
 !.micro-build/jspm-install
 !.micro-build/plugins
+cache
 ### <<< END MICRO-BUILD SECTION
 
-cache/
-config/conf.d/cache.conf
-config/resolv.conf
+config/cache_define.d

@@ -1,0 +1,35 @@
+server {
+	server_name www.github.com github.com api.github.com codeload.github.com;
+	proxy_cache github;
+	
+	listen 80;
+	listen 443 ssl;
+	
+	ssl_certificate keys/self-signed.crt;
+	ssl_certificate_key keys/self-signed.key;
+	
+	location / {
+        include cache.conf;
+		
+		proxy_cache_valid 200 302 30d;
+		proxy_pass https://$host$uri;
+	}
+}
+
+server {
+	server_name raw.githubusercontent.com;
+	proxy_cache githubusercontent;
+	
+	listen 80;
+	listen 443 ssl;
+	
+	ssl_certificate keys/self-signed.crt;
+	ssl_certificate_key keys/self-signed.key;
+	
+	location / {
+        include cache.conf;
+		
+		proxy_cache_valid 200 302 1y;
+		proxy_pass https://$host$uri;
+	}
+}
