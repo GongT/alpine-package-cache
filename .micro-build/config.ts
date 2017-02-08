@@ -29,7 +29,7 @@ build.shellCommand('/usr/sbin/nginx');
 build.stopCommand('./scripts/stop');
 
 build.dependService('nginx', 'https://github.com/GongT/nginx-docker.git');
-build.dockerRunArgument('--volumes-from=nginx', '--dns=8.8.8.8', '--dns=223.5.5.5');
+build.dockerRunArgument('--dns=8.8.8.8', '--dns=223.5.5.5');
 
 build.volume('./cache', '/data/cache');
 
