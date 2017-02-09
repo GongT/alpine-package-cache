@@ -1,6 +1,6 @@
-import {MicroBuildHelper} from "./x/microbuild-helper";
-import {MicroBuildConfig, ELabelNames, EPlugins} from "./x/microbuild-config";
-import {JsonEnv} from "../.jsonenv/_current_result";
+import {MicroBuildHelper} from "./.micro-build/x/microbuild-helper";
+import {MicroBuildConfig, ELabelNames, EPlugins} from "./.micro-build/x/microbuild-config";
+import {JsonEnv} from "./.jsonenv/_current_result";
 declare const build: MicroBuildConfig;
 declare const helper: MicroBuildHelper;
 /*
@@ -71,7 +71,7 @@ build.onConfig((isBuild) => {
 resolver ${resolvers.join(' ')};`);
 	resolvConf.save('./config/resolv.conf');
 	
-	const cacheDefinePath = path.resolve(__dirname, '../config/cache_define.d');
+	const cacheDefinePath = path.resolve(__dirname, './config/cache_define.d');
 	const fs = require('fs');
 	if (fs.existsSync(cacheDefinePath)) {
 		fs.readdirSync(cacheDefinePath).forEach((e) => {
