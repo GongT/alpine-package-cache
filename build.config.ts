@@ -50,7 +50,7 @@ build.onConfig((isBuild) => {
 	const RUNTIME_ROOT_FOLDER = isBuild? '/data' : path.dirname(__dirname);
 	build.startupCommand('-c', `${RUNTIME_ROOT_FOLDER}/config/nginx.conf`);
 	
-	const remove = ['127.0.0.1', build.getNetworkConfig().HOST_LOOP_IP, build.getNetworkConfig().HOST_LOOP_IP6];
+	const remove = ['127.0.0.1', '172.17.0.1'];
 	const contents = require('fs').readFileSync('/etc/resolv.conf', 'utf8').split(/\n/g);
 	
 	contents.push('223.5.5.5');
