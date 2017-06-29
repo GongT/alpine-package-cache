@@ -10,9 +10,11 @@ jspm_packages
 npm-debug.log*
 coverage/
 typings
+screen.*
 *.md
 Dockerfile
 *.Dockerfile
+build.config.ts
 !.micro-build/json-env-data.json
 !.jsonenv/_current_result.json.d.ts
 !.micro-build/docker/bin

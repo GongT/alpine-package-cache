@@ -23,12 +23,10 @@ build.domainName(projectName + '.' + JsonEnv.baseDomainName);
 build.isInChina(JsonEnv.gfw.isInChina);
 
 build.forwardPort(80, 'tcp');
-build.forwardPort(443, 'tcp');
 
 build.shellCommand('/usr/sbin/nginx');
 build.stopCommand('./scripts/stop');
 
-build.dependService('hosts-generator', 'https://github.com/GongT/hosts-generator.git');
 build.dockerRunArgument('--dns=8.8.8.8', '--dns=223.5.5.5');
 
 build.volume('./cache', '/data/cache');
