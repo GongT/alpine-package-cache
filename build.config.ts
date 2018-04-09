@@ -43,7 +43,7 @@ build.prependDockerFileContent('COPY config /data/config');
 build.noDataCopy(true);
 
 build.onConfig((isBuild) => {
-	const CacheDefineList = ['alpinelinux'];
+	const CacheDefineList = ['alpinelinux', 'pecl'];
 	const path = require('path');
 	
 	const RUNTIME_ROOT_FOLDER = isBuild? '/data' : path.dirname(__dirname);
@@ -62,8 +62,8 @@ build.onConfig((isBuild) => {
 		})
 		.filter((line) => {
 			return line && remove.every((ip) => {
-					return line.indexOf(ip) === -1;
-				});
+				return line.indexOf(ip) === -1;
+			});
 		});
 	
 	const resolvConf = helper.createTextFile(`# generated file

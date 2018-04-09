@@ -14,9 +14,11 @@ screen.*
 package-lock.json
 !.*ignore
 !.gitinclude
+!.babelrc
 cache
 config/resolv.conf
 config/cache_define.d/alpinelinux.conf
+config/cache_define.d/pecl.conf
 ### <<< END MICRO-BUILD SECTION
 
 config/cache_define.d
